@@ -1,6 +1,5 @@
 // Gathering HTML elements for manipulation
 var quizBody = document.getElementById("quiz");
-console.log(quizBody) 
 var resultsEl = document.getElementById("result");
 var finalScoreEl = document.getElementById("finalScore");
 var gameoverDiv = document.getElementById("gameover");
@@ -95,7 +94,7 @@ function generateQuizQuestion(){
     buttonD.innerHTML = currentQuestion.choiceD;
 };
 
-// Start Quiz function starts the TimeRanges, hides the start button, and displays the first quiz question.
+// startQuiz function starts the Timer, hides the start button, and displays the first quiz question.
 function startQuiz(){
     gameoverDiv.style.display = "none";
     startQuizDiv.style.display = "none";
@@ -122,7 +121,7 @@ function showScore(){
     finalScoreEl.innerHTML = "You got " + score + " out of " + quizQuestions.length + " correct!";
 }
 
-// On click of the submit button, we run the function highscore 
+// once they click the submit button, we run the function highscore 
 submitScoreBtn.addEventListener("click", function highscore(){
     
     
@@ -204,6 +203,7 @@ function checkAnswer(answer){
         generateQuizQuestion();
         //the answer is correct.
     }else if (answer !== correct && currentQuestionIndex !== finalQuestionIndex){
+        //if the user selects the wrong answer 15 seconds will be substracted from their time left. 
         timeLeft -= 15;
         alert("That Is Incorrect.")
         currentQuestionIndex++;
